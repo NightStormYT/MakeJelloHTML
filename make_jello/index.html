@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html>
+    <body onload='Update();'>
+        <div class="bgDIV" style="position: fixed;"> 
+            <img src="bg.png">
+        </div>
+        <div class="GameDiv">
+            <div class="gameHeader">
+                
+                <div id="headerTitle">
+                    make_jello.html
+                </div>
+
+                <div class="headSpacer">
+                </div>
+                <div id="headerTitle2">
+                    <p id="oxygen" class="mainCurrencies">
+                        1e608
+                    </p>
+                    <br>
+                    <p id="headerTitle3">
+                        Oxygen
+                    </p>
+                </div>
+                <div id="headerTitle2">
+                    <p id="hydrogen" class="mainCurrencies">
+                        1e608
+                    </p>
+                    <br>
+                    <p id="headerTitle3">
+                        Hydrogen
+                    </p>
+                </div>
+                <div id="headerTitle2">
+                    <p id="carbon" class="mainCurrencies">
+                        1e608
+                    </p>
+                    <br>
+                    <p id="headerTitle3">
+                        Carbon
+                    </p>
+                </div>
+                <div id="headerTitle2">
+                    <p id="nitrogen" class="mainCurrencies">
+                        1e608
+                    </p>
+                    <br>
+                    <p id="headerTitle3">
+                        Nitrogen
+                    </p>
+                </div>
+            </div>
+            <center>
+                <title>
+                    make_jello.html
+                </title>
+                <div style="width: 100%; float: center; text-align:center; margin-top: 50px;">
+                    <center>
+                    <div class="currencyDiv" id="productionText">
+                        
+                        <p id="cherryJello" style="margin:0px;">0 Cherry Jello</p>
+                        <p id="oxygenPerSec">You are making 0 Oxygen/s</p>
+                        <p id="hydrogenPerSec">You are making 0 Hydrogen/s</p>
+                        <p id="carbonPerSec">You are making 0 Carbon/s</p>
+                        <p id="nitrogenPerSec">You are making 0 Nitrogen/s</p>
+                    </div>
+                    </center>
+                </div>
+
+                <div float: top;>
+                    <button style="margin-left: 15px; margin-right: 15px;" type="button" onclick="createOxygen()" class="button button3" id="createO">Create 1 Oxygen</button>
+                    <button style="margin-left: 15px; margin-right: 15px;" type="button" onclick="createHydrogen()" class="button button3" id="createH">Create 1 Hydrogen</button>
+                    
+                    <br>
+                    <br>
+                    
+                    <button style="margin-left: 15px; margin-right: 15px;" type="button" onclick="createCarbon()" class="button button3" id="createC">Create 1 Carbon</button>
+                    <button style="margin-left: 15px; margin-right: 15px;" type="button" onclick="createNitrogen()" class="button button3" id="createN">Create 1 Nitrogen</button>
+                </div>
+                <center>
+                    <div class="currencyDiv" style="width: 625px; height: 775px; margin-left: 0px; margin-top: 100px;">
+                        <p class="titles" style="margin-top: 25px;">
+                            Enzymes
+                        </p>
+                        <p class="titles" style="margin-top: 25px; margin-bottom: 50px; font-size: 25px;">
+                            Tier O
+                        </p>
+                        <button style="margin-left: 15px; margin-bottom: 75px; margin-right: 15px;" type="button" onclick="BuyClickPower()" class="button button3" id="energizer">Energize <br> +1/click <br>-1 sugar</button>
+                        <p class="titles" style="margin-top: 25px; margin-bottom: 50px; font-size: 25px;">
+                            Tier I
+                        </p>
+                        <button style="margin-left: 15px; margin-bottom: 75px; margin-right: 15px;" type="button" onclick="BuyOxygenProduction()" class="button button3" id="timeLapse">Oxidizer <br> +10 Oxygen/s <br>-1 Cherry Jello</button>
+                        <button style="margin-left: 15px; margin-bottom: 75px; margin-right: 15px;" type="button" onclick="BuyHydrogenProduction()" class="button button3" id="timeLapse">Hydrogizer <br> +10 Hydrogen/s <br>-1 Cherry Jello</button>
+                        
+                        <br>
+                        <br>
+                        
+                        <button style="margin-left: 15px; margin-bottom: 75px; margin-right: 15px;" type="button" onclick="BuyCarbonProduction()" class="button button3" id="timeLapse">Carbonizer <br> +10 Carbon/s <br>-1 Cherry Jello</button>
+                        <button style="margin-left: 15px; margin-bottom: 75px; margin-right: 15px;" type="button" onclick="BuyNitrogenProduction()" class="button button3" id="timeLapse">Nitrogizer <br> +10 Nitrogen/s <br>-1 Cherry Jello</button>
+                    </div>
+                    <div class="currencyDiv" style="width: 1200px; height: 950px; margin-left: 0px; margin-top: 100px;">
+                        <p class="titles" style="margin-top: 25px;">
+                            Crafting
+                        </p>
+                        <p class="titles" style="margin-top: 25px; margin-bottom: 50px; font-size: 25px;">
+                            Tier I
+                        </p>
+                        
+                        <button style="margin-left: 15px; margin-bottom: 75px; margin-right: 15px;" type="button" onclick="craftAll()" class="button button3" id="buyAll">Craft All</button>
+                        
+                        <br>
+                        
+                        <button style="margin-left: 15px; margin-bottom: 75px; margin-right: 15px;" type="button" onclick="craftSugar()" class="button button3" id="craftSugar">Sugar (0) <br> Material <br>-12C, 22H, 11O</button>
+                        
+                        <button style="margin-left: 15px; margin-bottom: 75px; margin-right: 15px;" type="button" onclick="craftGelatin()" class="button button3" id="craftGelatin">Gelatin (0)<br> Material <br>-102C, 151H, 39O, 31N</button>
+                        
+                        <button style="margin-left: 15px; margin-bottom: 75px; margin-right: 15px;" type="button" onclick="craftAdAcid()" class="button button3" id="craftAdAcid">Adipic Acid (0)<br> Material <br>-6C, 10H, 4O</button>
+                        
+                        <button style="margin-left: 15px; margin-bottom: 75px; margin-right: 15px;" type="button" onclick="craftDiNaPhosphate()" class="button button3" id="craftDiNaPhosphate">Di-Na Phosphate (0)<br> Material <br>-3C(2Na, 1P), 1H, 4O</button>
+                        
+                        <button style="margin-left: 15px; margin-bottom: 75px; margin-right: 15px;" type="button" onclick="craftNaCitrate()" class="button button3" id="craftNaCitrate">Na Citrate (0)<br> Material <br>-9C(3Na, 6C), 5H, 7O</button>
+                        
+                        <button style="margin-left: 15px; margin-bottom: 75px; margin-right: 15px;" type="button" onclick="craftRed()" class="button button3" id="craftRed">Red 40(0)<br> Material <br>-22C, 14H, 8O, 2N</button>
+                        
+                        <p class="titles" style="margin-top: 25px; margin-bottom: 50px; font-size: 25px;">
+                            Tier II
+                        </p>
+                        
+                        <button style="margin-left: 15px; margin-bottom: 75px; margin-right: 15px;" type="button" onclick="craftJello()" class="button button3" id="craftJello">Cherry Jello<br> Primary Resource <br>-1 of all materials</button>
+                        
+                        <button style="margin-left: 15px; margin-bottom: 75px; margin-right: 15px;" type="button" onclick="craftMaxJello()" class="button button3" id="buyAll">Craft Max Jello</button>
+                        
+                        
+                    </div>
+                </center>
+                <br>
+                
+                <script src='break_infinity.js'></script>
+                <script>
+                    var player = 
+                    {
+                        cherryJello: new Decimal(0),
+                        
+                        carbon: new Decimal(0),
+                        hydrogen: new Decimal(0),
+                        oxygen: new Decimal(0),
+                        nitrogen: new Decimal(0),
+                        
+                        clickPower: new Decimal(5),
+
+                        carbonPerSecond: new Decimal(0),
+                        hydrogenPerSecond: new Decimal(0),
+                        oxygenPerSecond: new Decimal(0),
+                        nitrogenPerSecond: new Decimal(0),
+
+                        carbonPerSecondD: new Decimal(0),
+                        hydrogenPerSecondD: new Decimal(0),
+                        oxygenPerSecondD: new Decimal(0),
+                        nitrogenPerSecondD: new Decimal(0),
+                        
+                        oxygenToAddPerTick: new Decimal(0),
+                        hydrogenToAddPerTick: new Decimal(0),
+                        carbonToAddPerTick: new Decimal(0),
+                        nitrogenToAddPerTick: new Decimal(0),
+                        
+                        sugar: new Decimal(0),
+                        gelatin: new Decimal(0),
+                        adipicAcid: new Decimal(0),
+                        disodiumPhosphate: new Decimal(0),
+                        sodiumCitrate: new Decimal(0),
+                        red40: new Decimal(0)
+                    };
+
+                    // Upgrades
+                    var oxidizer =
+                    {
+                        cost: new Decimal(1),
+                        count: new Decimal(0),
+                        baseProduction: new Decimal(10)
+                    };
+                    var hydrogizer =
+                    {
+                        cost: new Decimal(1),
+                        count: new Decimal(0),
+                        baseProduction: new Decimal(10)
+                    };
+                    var carbonizer =
+                    {
+                        cost: new Decimal(1),
+                        count: new Decimal(0),
+                        baseProduction: new Decimal(10)
+                    };
+                    var nitrogizer =
+                    {
+                        cost: new Decimal(1),
+                        count: new Decimal(0),
+                        baseProduction: new Decimal(10)
+                    };
+                    
+                    var energizer = 
+                    {
+                        cost: new Decimal(1),
+                        count: new Decimal(0)
+                    }
+
+                    // Converters
+                    var timeStrecher =
+                    {
+                        cost: new Decimal(1),
+                        count: new Decimal(0),
+                        baseProduction: new Decimal(0.2)
+                    };
+
+                    function Update()
+                    {
+                        //strechConvertProduction = (hydrogenPerSecond).dividedBy(60);
+                        player.oxygenPerSecond = oxidizer.baseProduction.times(oxidizer.count);
+                        player.oxygenToAddPerTick = (player.oxygenPerSecond).dividedBy(60);
+                        player.oxygen = player.oxygen.plus(player.oxygenToAddPerTick);
+                        
+                        player.hydrogenPerSecond = hydrogizer.baseProduction.times(hydrogizer.count);
+                        player.hydrogenToAddPerTick = (player.hydrogenPerSecond).dividedBy(60);
+                        player.hydrogen = player.hydrogen.plus(player.hydrogenToAddPerTick);
+                        
+                        player.carbonPerSecond = carbonizer.baseProduction.times(carbonizer.count);
+                        player.carbonToAddPerTick = (player.carbonPerSecond).dividedBy(60);
+                        player.carbon = player.carbon.plus(player.carbonToAddPerTick);
+                        
+                        player.nitrogenPerSecond = nitrogizer.baseProduction.times(nitrogizer.count);
+                        player.nitrogenToAddPerTick = (player.nitrogenPerSecond).dividedBy(60);
+                        player.nitrogen = player.nitrogen.plus(player.nitrogenToAddPerTick);
+                        
+                        // Oxygen Per Second
+                        if (player.oxygenPerSecond.lt(1000))
+                            document.getElementById("oxygenPerSec").innerHTML = "You are making " + player.oxygenPerSecond.toFixed(0) + " Oxygen/s";
+                        else
+                            document.getElementById("oxygenPerSec").innerHTML = "You are making " + (player.oxygenPerSecond.m.toPrecision(3) + "e" + player.oxygenPerSecond.e) + " Oxygen/s";
+                        
+                        // Hydrogen Per Second
+                        if (player.hydrogenPerSecond.lt(1000))
+                            document.getElementById("hydrogenPerSec").innerHTML = "You are making " + player.hydrogenPerSecond.toFixed(0) + " Hydrogen/s";
+                        else
+                            document.getElementById("hydrogenPerSec").innerHTML = "You are making " + (player.hydrogenPerSecond.m.toPrecision(3) + "e" + player.hydrogenPerSecond.e) + " Hydrogen/s";
+                        
+                        // Carbon Per Second
+                        if (player.carbonPerSecond.lt(1000))
+                            document.getElementById("carbonPerSec").innerHTML = "You are making " + player.carbonPerSecond.toFixed(0) + " Carbon/s";
+                        else
+                            document.getElementById("carbonPerSec").innerHTML = "You are making " + (player.carbonPerSecond.m.toPrecision(3) + "e" + player.carbonPerSecond.e) + " Carbon/s";
+                        
+                        // Nitrogen Per Second
+                        if (player.nitrogenPerSecond.lt(1000))
+                            document.getElementById("nitrogenPerSec").innerHTML = "You are making " + player.nitrogenPerSecond.toFixed(0) + " Nitrogen/s";
+                        else
+                            document.getElementById("nitrogenPerSec").innerHTML = "You are making " + (player.nitrogenPerSecond.m.toPrecision(3) + "e" + player.nitrogenPerSecond.e) + " Nitrogen/s";
+                        
+                        // Craft Inventories
+                        document.getElementById("craftSugar").innerHTML = "Sugar (" + player.sugar + ") <br> Material <br>-12C, 22H, 11O";
+                        document.getElementById("craftGelatin").innerHTML = "Gelatin (" + player.gelatin + ") <br> Material <br>-102C, 151H, 39O, 31N";
+                        document.getElementById("craftAdAcid").innerHTML = "Adipic Acid (" + player.adipicAcid + ") <br> Material <br>-6C, 10H, 4O";
+                        document.getElementById("craftDiNaPhosphate").innerHTML = "Di-Na Phosphate (" + player.disodiumPhosphate + ") <br> Material <br>-3C(2Na, 1P), 1H, 4O";
+                        document.getElementById("craftNaCitrate").innerHTML = "Na Citrate (" + player.sodiumCitrate + ") <br> Material <br>-9C(3Na, 6C), 5H, 7O";
+                        document.getElementById("craftRed").innerHTML = "Red 40 (" + player.red40 + ") <br> Material <br>-22C, 14H, 8O, 2N";
+                        
+                        // Create
+                        document.getElementById("createO").innerHTML = "Create " + player.clickPower + " Oxygen";
+                        document.getElementById("createH").innerHTML = "Create " + player.clickPower + " Hydrogen";
+                        document.getElementById("createC").innerHTML = "Create " + player.clickPower + " Carbon";
+                        document.getElementById("createN").innerHTML = "Create " + player.clickPower + " Nitrogen";
+                        
+                        // Cherry Jello
+                        if (player.cherryJello.lt(1000))
+                            document.getElementById("cherryJello").innerHTML = player.cherryJello.toFixed(0) + " Cherry Jello";
+                        else
+                            document.getElementById("cherryJello").innerHTML = (player.cherryJello.m.toPrecision(3) + "e" + player.cherryJello.e) + " Cherry Jello";
+                        
+                        // Oxygen
+                        if (player.oxygen.lt(1000))
+                            document.getElementById("oxygen").innerHTML = player.oxygen.toFixed(0);
+                        else
+                            document.getElementById("oxygen").innerHTML = (player.oxygen.m.toPrecision(3) + "e" + player.oxygen.e);
+                        
+                        // Hydrogen
+                        if (player.hydrogen.lt(1000))
+                            document.getElementById("hydrogen").innerHTML = player.hydrogen.toFixed(0);
+                        else
+                            document.getElementById("hydrogen").innerHTML = (player.hydrogen.m.toPrecision(3) + "e" + player.hydrogen.e);
+                        
+                        // Carbon
+                        if (player.carbon.lt(1000))
+                            document.getElementById("carbon").innerHTML = player.carbon.toFixed(0);
+                        else
+                            document.getElementById("carbon").innerHTML = (player.carbon.m.toPrecision(3) + "e" + player.carbon.e);
+                        
+                        // Nitrogen
+                        if (player.nitrogen.lt(1000))
+                            document.getElementById("nitrogen").innerHTML = player.nitrogen.toFixed(0);
+                        else
+                            document.getElementById("nitrogen").innerHTML = (player.nitrogen.m.toPrecision(3) + "e" + player.nitrogen.e);
+                       
+                        // Click Cost
+                        if (energizer.cost.lt(1000))
+                            document.getElementById("energizer").innerHTML =  "Energizer <br> +1/click <br>" + energizer.cost.toFixed(2) + " sugar";
+                        else
+                            document.getElementById("energizer").innerHTML = "Energizer <br> +1/click <br>" + ((energizer.cost).m.toPrecision(3) + "e" + energizer.cost.e) + " sugar";
+                        
+                    }
+                    
+                    // Create
+
+                    function createOxygen()
+                    {
+                        player.oxygen = player.oxygen.plus(player.clickPower);
+                    }
+
+                    function createHydrogen()
+                    {
+                        player.hydrogen = player.hydrogen.plus(player.clickPower);
+                    }
+
+                    function createCarbon()
+                    {
+                        player.carbon = player.carbon.plus(player.clickPower);
+                    }
+
+                    function createNitrogen()
+                    {
+                        player.nitrogen = player.nitrogen.plus(player.clickPower);
+                    }
+                    
+                    // Craft
+                    
+                    function craftSugar()
+                    {
+                        if (player.carbon.gte(12) && player.hydrogen.gte(22) && player.oxygen.gte(11))
+                        {
+                            player.sugar = player.sugar.plus(1);
+                            
+                            player.carbon = player.carbon.minus(12);
+                            player.hydrogen = player.hydrogen.minus(22);
+                            player.oxygen = player.oxygen.minus(11);
+                        }
+                    }
+                    
+                    function craftGelatin()
+                    {
+                        if (player.carbon.gte(102) && player.hydrogen.gte(151) && player.oxygen.gte(39) && player.nitrogen.gte(31))
+                        {
+                            player.gelatin = player.gelatin.plus(1);
+                            
+                            player.carbon = player.carbon.minus(102);
+                            player.hydrogen = player.hydrogen.minus(151);
+                            player.oxygen = player.oxygen.minus(39);
+                            player.nitrogen = player.nitrogen.minus(31);
+                        }
+                    }
+                    
+                    function craftAdAcid()
+                    {
+                        if (player.carbon.gte(6) && player.hydrogen.gte(10) && player.oxygen.gte(4))
+                        {
+                            player.adipicAcid = player.adipicAcid.plus(1);
+                            
+                            player.carbon = player.carbon.minus(6);
+                            player.hydrogen = player.hydrogen.minus(10);
+                            player.oxygen = player.oxygen.minus(4);
+                        }
+                    }
+                    
+                    function craftDiNaPhosphate()
+                    {
+                        if (player.carbon.gte(3) && player.hydrogen.gte(1) && player.oxygen.gte(4))
+                        {
+                            player.disodiumPhosphate = player.disodiumPhosphate.plus(1);
+                            
+                            player.carbon = player.carbon.minus(3);
+                            player.hydrogen = player.hydrogen.minus(1);
+                            player.oxygen = player.oxygen.minus(4);
+                        }
+                    }
+                    
+                    
+                    function craftNaCitrate()
+                    {
+                        if (player.carbon.gte(9) && player.hydrogen.gte(5) && player.oxygen.gte(7))
+                        {
+                            player.sodiumCitrate = player.sodiumCitrate.plus(1);
+                            
+                            player.carbon = player.carbon.minus(9);
+                            player.hydrogen = player.hydrogen.minus(5);
+                            player.oxygen = player.oxygen.minus(7);
+                        }
+                    }
+                    
+                    
+                    function craftRed()
+                    {
+                        if (player.carbon.gte(22) && player.hydrogen.gte(14) && player.oxygen.gte(8) && player.nitrogen.gte(22))
+                        {
+                            player.red40 = player.red40.plus(1);
+                            
+                            player.carbon = player.carbon.minus(22);
+                            player.hydrogen = player.hydrogen.minus(14);
+                            player.oxygen = player.oxygen.minus(8);
+                            player.nitrgoen = player.nitrogen.minus(8);
+                        }
+                    }
+                    
+                    function craftJello()
+                    {
+                        if (player.sugar.gte(1) && player.gelatin.gte(1) && player.adipicAcid.gte(1) && player.disodiumPhosphate.gte(1) && player.sodiumCitrate.gte(1) && player.red40.gte(1))
+                        {
+                            player.cherryJello = player.cherryJello.plus(1);
+                            
+                            player.sugar = player.sugar.minus(1);
+                            player.gelatin = player.gelatin.minus(1);
+                            player.adipicAcid = player.adipicAcid.minus(1);
+                            player.disodiumPhosphate = player.disodiumPhosphate.minus(1);
+                            player.sodiumCitrate = player.sodiumCitrate.minus(1);
+                            player.red40 = player.red40.minus(1);
+                        }
+                    }
+                    
+                    function craftMaxJello()
+                    {
+                        while (player.sugar.gte(1) && player.gelatin.gte(1) && player.adipicAcid.gte(1) && player.disodiumPhosphate.gte(1) && player.sodiumCitrate.gte(1) && player.red40.gte(1))
+                        {
+                            player.cherryJello = player.cherryJello.plus(1);
+                            
+                            player.sugar = player.sugar.minus(1);
+                            player.gelatin = player.gelatin.minus(1);
+                            player.adipicAcid = player.adipicAcid.minus(1);
+                            player.disodiumPhosphate = player.disodiumPhosphate.minus(1);
+                            player.sodiumCitrate = player.sodiumCitrate.minus(1);
+                            player.red40 = player.red40.minus(1);
+                        }
+                    }
+                    
+                    function craftAll()
+                    {
+                        craftSugar();
+                        craftGelatin();
+                        craftAdAcid();
+                        craftDiNaPhosphate();
+                        craftNaCitrate();
+                        craftRed();
+                    }
+                    
+                    // Upgrades
+                    
+                    function BuyClickPower()
+                    {
+                        if (player.sugar.gte(energizer.cost))
+                        {
+                            player.clickPower++;
+                            player.sugar = player.sugar.minus(energizer.cost);
+                        } 
+                    }
+
+                    function BuyOxygenProduction()
+                    {
+                        if (player.cherryJello.gte(oxidizer.cost))
+                        {
+                            oxidizer.count++;
+                            player.cherryJello = player.cherryJello.minus(oxidizer.cost);
+                            //oxidizer.cost = oxidizer.cost.times(1.07);
+                        }
+                    }
+
+                    function BuyHydrogenProduction()
+                    {
+                        if (player.cherryJello.gte(hydrogizer.cost))
+                        {
+                            hydrogizer.count++;
+                            player.cherryJello = player.cherryJello.minus(hydrogizer.cost);
+                            //hydrogizer.cost = hydrogizer.cost.times(1.07);
+                        }
+                    }
+
+                    function BuyCarbonProduction()
+                    {
+                        if (player.cherryJello.gte(carbonizer.cost))
+                        {
+                            carbonizer.count++;
+                            player.cherryJello = player.cherryJello.minus(carbonizer.cost);
+                            //carbonizer.cost = carbonizer.cost.times(1.07);
+                        }
+                    }
+
+                    function BuyNitrogenProduction()
+                    {
+                        if (player.cherryJello.gte(nitrogizer.cost))
+                        {
+                            nitrogizer.count++;
+                            player.cherryJello = player.cherryJello.minus(nitrogizer.cost);
+                            //nitrogizer.cost = nitrogizer.cost.times(1.07);
+                        }
+                    }
+                    
+
+                    // Converters
+                    
+                    function TimeStrecher()
+                    {
+                        if (bentTime.gte(timeStrecher.cost))
+                        {
+                            timeStrecher.count++;
+                            bentTime = bentTime.minus(timeStrecher.cost);
+                            timeStrecher.cost = timeStrecher.cost.times(1.15);
+                        }
+                    }
+                    setInterval(Update, 1000/60);
+
+                </script>
+                <style>
+                    .BGDiv
+                    {
+                        position: relative;
+                        top: 0;
+                        left: 0;
+                        z-index: -100;
+                    }
+                    .prestigeBox
+                    {
+                        width: 500px;
+                        background-color: #121c1c;
+                        border-radius: 50px;
+                    }
+                    .titles
+                    {
+                        font-size: 40px;
+                        margin: 0px;
+                        color: white;
+                        text-shadow: 0px 0px 30px white;
+                    }
+                    .specialBox
+                    {
+                        float: right;
+                        margin-top: 125px;
+                        margin-right: 100px;
+                        margin-bottom: 100px;
+                        width: 500px;
+                        background-color: #121c1c;
+                        border-radius: 50px;
+                    }
+                    .convertBox
+                    {
+                        width: 500px;
+                        background-color: #121c1c;
+                        border-radius: 50px;
+                        display: inline-block;
+                        
+                    }
+                    .upgradesBox
+                    {
+                        float: left;
+                        margin-top: 125px;
+                        margin-left: 100px;
+                        margin-bottom: 100px;
+                        width: 500px;
+                        background-color: #121c1c;
+                        border-radius: 50px;
+                    }
+                    .headSpacer
+                    {
+                        float: left;
+                        margin: 0px;
+                        margin-top: 12.5px;
+                        margin-right: 50px;
+                        margin-left: 50px;
+                        padding: 0px;
+                        opacity: 0.1f;
+                        background-color: rgba(53, 126, 125, 0.3);
+                        text-shadow: 0px 0px 30px #347D7C;
+                        color: #347D7C;
+                        font-size: 50px;
+                        height: 75px;
+                        width: 2px;
+                    }
+                    .GameDiv
+                    {
+                        width: 100%;
+                        height: 1000px;
+                        position: absolute;
+                        z-index: 100;
+                    }
+                    .currencyDiv
+                    {
+                        padding: 15px;
+                        background-color: #121c1c;
+                        border-radius: 50px;
+                        margin-top: 150px;
+                        margin-bottom: 50px;
+                        width: 900px;
+                    }
+                    .gameHeader
+                    {
+                        text-align:center;
+                        margin: 0px;
+                        padding: 0px;
+                        background: white;
+                        width: 100%;
+                        height: 100px;
+                        position: fixed;
+                        top: 0px;
+                        box-shadow: 0px 10px 16px 0px rgba(0,0,0,0.75);
+                    }
+                    body
+                    {
+                        padding: 0px;
+                        margin: 0px;
+                    }
+                    head
+                    {
+                        padding: 0px;
+                        margin: 0px;
+                    }
+                    p
+                    {
+                        color: white;
+                    }
+                    .button {
+                        float: top;
+                        background-color: #4CAF50; /* Green */
+                        border: none;
+                        color: white;
+                        text-align: center;
+                        text-decoration: none;
+                        display: inline-block;
+
+                        font-family: 'mercyregular';
+                        -webkit-transition-duration: 0.4s; /* Safari */
+                        transition-duration: 0.3s;
+                        cursor: pointer;
+                        font-size: 20px;
+                    }
+                    .button:focus
+                    {
+                        outline: 0;
+                    }
+                    html
+                    {
+                        padding: 0px;
+                        margin: 0px;
+                        background-color: #162323;
+                        font-family: 'mercyregular';
+                    }
+
+                    #headerTitle
+                    {
+
+                        float: left;
+                        margin: 0px;
+                        margin-top: 19.5px;
+                        margin-left: 50px;
+                        padding: 0px;
+                        color: white;
+                        text-shadow: 0px 0px 30px #BF0B40;
+                        color: #BF0B40;
+                        font-size: 50px;
+                        width: 400px;
+                    }
+                    #headerTitle2
+                    {
+
+                        float: left;
+                        text-align: left;
+                        margin: 0px;
+                        margin-top: 19.5px;
+                        margin-left: 0px;
+                        margin-right: 50px;
+                        padding: 0px;
+                        color: white;
+                        text-shadow: 0px 0px 30px #273043;
+                        color: #273043;
+                        font-size: 25px;
+                        width: 135px;
+                    }
+                    #headerTitle3
+                    {
+
+                        float: left;
+                        text-align: left;
+                        margin: 0px;
+                        padding: 0px;
+                        color: white;
+                        text-shadow: 0px 0px 30px #273043;
+                        color: #273043;
+                        font-size: 25px;
+                    }
+                    .mainCurrencies
+                    {
+
+                        float: left;
+                        text-align: left;
+                        margin: 0px;
+                        padding: 0px;
+                        color: white;
+                        text-shadow: 0px 0px 30px #273043;
+                        color: #273043;
+                        font-size: 25px;
+                        width: 135px;
+                    }
+                    .button3
+                    {
+                        float: top;
+                        box-shadow: 0px 0px 5px 12px white;
+                        background-color: white;
+                        color: #273043;
+                        border: 2px solid white;
+                        width: 250px;
+                        height: 100px;
+                    }
+
+                    .button3:hover
+                    {
+                        background-color: #273043;
+                        box-shadow: 0px 0px 20px 12px #273043;
+                        border: 2px solid #273043;
+                        color: white;
+                        margin-left: 50px;
+                        margin-right: 50px;
+                        width: 300px;
+                        top: 0px;
+
+                    }
+                    @font-face
+                    {
+                        font-family: 'mercyregular';
+                        src: url('sary_soft_semiblod-webfont.woff2') format('woff2'),
+                            url('sary_soft_semiblod-webfont.woff') format('woff');
+                        font-weight: normal;
+                        font-style: normal;
+
+                    }
+
+                    #time
+                    {
+                        font-size: 40px;
+                        margin: 0px;
+                        padding-bottom: 50px;
+                        color: white;
+                    }
+
+                    #strechedTime
+                    {
+                        font-size: 40px;
+                        margin: 0px;
+                        color: white;
+                        text-shadow: 0px 0px 30px white;
+                    }
+
+                    #bentTime
+                    {
+                        font-size: 75px;
+                        padding-top: 50px;
+                        margin: 0px;
+                        color: #347D7C;
+                        text-shadow: 0px 0px 30px #347D7C;
+                    }
+                    #cherryJello
+                    {
+                        font-size: 100px;
+                        padding-top: 50px;
+                        margin: 0px;
+                        margin-top: 100px;
+                        color: #DB6972;
+                        text-shadow: 0px 0px 30px #DB6972;
+                    }
+                    #productionText
+                    {
+                        font-size: 25px;
+                        padding-bottom: 15px;
+                        color: white;
+                    }
+                </style>
+            </center>
+        </div>
+    </body>
+</html>
