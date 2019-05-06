@@ -98,7 +98,7 @@
                         <button style="margin-left: 15px; margin-bottom: 75px; margin-right: 15px;" type="button" onclick="BuyCarbonProduction()" class="button button3" id="timeLapse">Carbonizer <br> +10 Carbon/s <br>-1 Cherry Jello</button>
                         <button style="margin-left: 15px; margin-bottom: 75px; margin-right: 15px;" type="button" onclick="BuyNitrogenProduction()" class="button button3" id="timeLapse">Nitrogizer <br> +10 Nitrogen/s <br>-1 Cherry Jello</button>
                     </div>
-                    <div class="currencyDiv" style="width: 1200px; height: 950px; margin-left: 0px; margin-top: 100px;">
+                    <div class="currencyDiv" style="width: 1200px; height: 1150px; margin-left: 0px; margin-top: 100px;">
                         <p class="titles" style="margin-top: 25px;">
                             Crafting
                         </p>
@@ -126,8 +126,8 @@
                             Tier II
                         </p>
                         
-                        <button style="margin-left: 15px; margin-bottom: 75px; margin-right: 15px;" type="button" onclick="craftJello()" class="button button3" id="craftJello">Cherry Jello<br> Primary Resource <br>-1 of all materials</button>
-                        
+                        <button style="margin-left: 15px; margin-bottom: 75px; margin-right: 15px;" type="button" onclick="craftJello()" class="button button3" id="craftJello">Cherry Jello<br> Primary Resource <br>Cost: 1 of all materials</button>
+                        <br>
                         <button style="margin-left: 15px; margin-bottom: 75px; margin-right: 15px;" type="button" onclick="craftMaxJello()" class="button button3" id="buyAll">Craft Max Jello</button>
                         
                         
@@ -146,7 +146,7 @@
                         oxygen: new Decimal(0),
                         nitrogen: new Decimal(0),
                         
-                        clickPower: new Decimal(5),
+                        clickPower: new Decimal(10),
 
                         carbonPerSecond: new Decimal(0),
                         hydrogenPerSecond: new Decimal(0),
@@ -255,12 +255,12 @@
                             document.getElementById("nitrogenPerSec").innerHTML = "You are making " + (player.nitrogenPerSecond.m.toPrecision(3) + "e" + player.nitrogenPerSecond.e) + " Nitrogen/s";
                         
                         // Craft Inventories
-                        document.getElementById("craftSugar").innerHTML = "Sugar (" + player.sugar + ") <br> Material <br>-12C, 22H, 11O";
-                        document.getElementById("craftGelatin").innerHTML = "Gelatin (" + player.gelatin + ") <br> Material <br>-102C, 151H, 39O, 31N";
-                        document.getElementById("craftAdAcid").innerHTML = "Adipic Acid (" + player.adipicAcid + ") <br> Material <br>-6C, 10H, 4O";
-                        document.getElementById("craftDiNaPhosphate").innerHTML = "Di-Na Phosphate (" + player.disodiumPhosphate + ") <br> Material <br>-3C(2Na, 1P), 1H, 4O";
-                        document.getElementById("craftNaCitrate").innerHTML = "Na Citrate (" + player.sodiumCitrate + ") <br> Material <br>-9C(3Na, 6C), 5H, 7O";
-                        document.getElementById("craftRed").innerHTML = "Red 40 (" + player.red40 + ") <br> Material <br>-22C, 14H, 8O, 2N";
+                        document.getElementById("craftSugar").innerHTML = "Sugar (" + player.sugar + ") <br> Material <br>Cost: 12C, 22H, 11O";
+                        document.getElementById("craftGelatin").innerHTML = "Gelatin (" + player.gelatin + ") <br> Material <br>Cost: 102C, 151H, 39O, 31N";
+                        document.getElementById("craftAdAcid").innerHTML = "Adipic Acid (" + player.adipicAcid + ") <br> Material <br>Cost: 6C, 10H, 4O";
+                        document.getElementById("craftDiNaPhosphate").innerHTML = "Di-Na Phosphate (" + player.disodiumPhosphate + ") <br> Material <br>Cost: 3C(2Na, 1P), 1H, 4O";
+                        document.getElementById("craftNaCitrate").innerHTML = "Na Citrate (" + player.sodiumCitrate + ") <br> Material <br>Cost: 9C(3Na, 6C), 5H, 7O";
+                        document.getElementById("craftRed").innerHTML = "Red 40 (" + player.red40 + ") <br> Material <br>Cost: 22C, 14H, 8O, 2N";
                         
                         // Create
                         document.getElementById("createO").innerHTML = "Create " + player.clickPower + " Oxygen";
@@ -710,6 +710,7 @@
                         border: 2px solid white;
                         width: 250px;
                         height: 100px;
+                        font-size: 15px;
                     }
 
                     .button3:hover
@@ -722,6 +723,7 @@
                         margin-right: 50px;
                         width: 300px;
                         top: 0px;
+                        font-size: 20px;
 
                     }
                     @font-face
